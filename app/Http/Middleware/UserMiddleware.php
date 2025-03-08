@@ -15,7 +15,7 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->input('auth') !== 'bensingisthekey'){
+        if ($request->input('auth') !== 'deocampoisthekey'){
             abort(401);
         }
         return $next($request);
