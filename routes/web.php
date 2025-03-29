@@ -10,8 +10,16 @@ use App\Services\TaskService;
 use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['name' => 'ARDEN-APP']);
 });
+
+Route::get('users', [UserController::class, 'index']);
+
+Route::resource('products', ProductController::class);
+
+
+
+
 
 Route::get('/jhondel-hater', function (Request $request){
     $input = "bulok si jhondel sobra";
@@ -79,9 +87,9 @@ Route::post('/token' , function (Request $request){
 });
 
 
-Route::get('/user', [UserController::class, 'index']) ->middleware('user-middleware');
+//Route::get('/user', [UserController::class, 'index']) ->middleware('user-middleware');
 
-Route::resource('products', ProductController::class);
+//Route::resource('products', ProductController::class);
 
 Route::get('/product-list', function (ProductService $productService) {
     $data['products'] = $productService->listProducts();
